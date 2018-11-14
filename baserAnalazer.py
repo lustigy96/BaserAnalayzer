@@ -7,6 +7,7 @@ MAX_OVERLAP=0.5 #precent
 
 FILE_IN_NAME="lola"
 PATH_BASER_FILES="C:\Users\YAEL\ProjectCSE\BASER\\"
+PATH_PYTHON_FILES="C:\Users\YAEL\PycharmProjects\BaserAnalayzer\\"
 PATH_DNABASER_PROGRAM="C:\Users\YAEL\DNABASER\\"
 
 #this function takes the string and put in to #parts files with MAX overlap in the DEFINES
@@ -22,12 +23,16 @@ def sepString2files(string, parts, name,ind):
         part += 1
     for i in range(len(sub_string)-1): #the overlap is implenebted here
         f=open(PATH_BASER_FILES+"in\\"+name+str(ind)+".fa","w")
+        f2=open(PATH_PYTHON_FILES+"in\\"+name+str(ind)+".fa","w")
         f.write(">gi|1\n"+sub_string[i]+(sub_string[i+1])[0:int(MAX_OVERLAP*len(sub_string[i+1]))])
-        f.close()
+        f2.write(">gi|1\n"+sub_string[i]+(sub_string[i+1])[0:int(MAX_OVERLAP*len(sub_string[i+1]))])
+        f.close(); f2.close();
         ind += 1
     f = open(PATH_BASER_FILES + "in\\" + name + str(ind) + ".fa", "w")
+    f2 = open(PATH_PYTHON_FILES + "in\\" + name + str(ind) + ".fa", "w")
     f.write(">gi|1\n" + sub_string[-1])
-    f.close()
+    f2.write(">gi|1\n" + sub_string[-1])
+    f.close(); f2.close();
 
 
 
